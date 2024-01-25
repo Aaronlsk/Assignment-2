@@ -93,6 +93,76 @@
         header.sticky ul li a {
             color: #000;
         }
+
+        h1 {
+            color: White;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        .checkout-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .checkout-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .checkout-box label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .checkout-box input[type="text"],
+        .checkout-box input[type="tel"],
+        .checkout-box input[type="email"],
+        .checkout-box input[type="password"],
+        .checkout-box select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .checkout-box button {
+            background: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-title {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 30px;
+        }
+
+        .location {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .country,
+        .city {
+            display: flex;
+            flex-direction: column;
+        }
     </style>
 </head>
 <body>
@@ -105,6 +175,49 @@
             <li><a href="Account.html">Account</a></li>
         </ul>
     </header>
+    <h1>Want to Play Games?</h1>
+    <h2>SIGN UP NOW!</h2>
+    <div class="checkout-container">
+        <div class="checkout-box">
+            <div class="form-title">Login</div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="username">
+          
+            <label for="contact">Contact Number:</label>
+            <input type="email" id="email" name="email">
+          
+            <label for="text">Password:</label>
+            <input type="text" id="password" name="password">
+          
+            <button type="submit">Login</button>
+        </div>
+
+        
+        <div class="checkout-box">
+            <div class="form-title">Sign Up</div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+          
+            <label for="contact">Contact Number:</label>
+            <input type="text" id="contact" name="contact">
+          
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+          
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address">
+
+            <label for="Password">Password:</label>
+            <input type="text" id="password" name="password">
+
+            <label for="Password">Re-enter Password:</label>
+            <input type="text" id="password" name="password">
+
+            <button type="submit">Sign Up</button>
+        </div>
+    </div>
+    
+
     <script>
         window.addEventListener("scroll", function () {
             var header = document.querySelector("header");
