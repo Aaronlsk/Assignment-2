@@ -54,7 +54,6 @@
             padding: 40px 100px;
             z-index: 100000;
         }
-
         header.sticky {
             padding: 5px 100px;
             background: #fff;
@@ -100,11 +99,56 @@
         <a href="#" class="logo">EZMart</a>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="Music.html">What's New</a></li>
-            <li><a href="Social.html">Games</a></li>
-            <li><a href="Merch.html">Account</a></li>
+            <li><a href="What's New.html">What's New</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="Account.html">Account</a></li>
         </ul>
     </header>
+
+    <div></div>    
+
+    <div class="tourSection">
+        <div class="tourSlider">
+            <div class="tourList">
+                <div class="tourItem">
+                    <img src="">
+                </div>
+                <div class="tourItem">
+                    <img src="">
+                </div>
+                <div class="tourItem">
+                    <img src="">
+                </div>
+                <div class="tourItem">
+                    <img src="">
+                </div>
+                <div class="tourItem">
+                    <img src="">
+                </div>
+                <div class="tourItem">
+                    <img src="">
+                </div>
+                <div class="tourItem">
+                    <img src="">
+                </div>
+            </div>
+            <!-- button prev and next -->
+            <div class="tourButtons">
+                <button id="tourPrev">&lt;</button>
+                <button id="tourNext">&gt;</button>
+            </div>
+            <!-- dots (if 7 items => 7 dot) -->
+            <ul class="tourDots">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
     <script>
         window.addEventListener("scroll", function () {
             var header = document.querySelector("header");
