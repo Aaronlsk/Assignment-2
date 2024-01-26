@@ -102,7 +102,11 @@
             color: white;
         }
 
+<<<<<<< HEAD
         .checkout-container {
+=======
+        .account-container {
+>>>>>>> e28d76e75ef53b558e6fcf4bc6ae5c32eef6bd71
             display: flex;
             justify-content: space-between;
             gap: 10px;
@@ -110,7 +114,21 @@
             box-sizing: border-box;
         }
 
+<<<<<<< HEAD
         .checkout-box {
+=======
+        .account-container .login-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px; 
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+      
+        .account-container .signup-box {
+>>>>>>> e28d76e75ef53b558e6fcf4bc6ae5c32eef6bd71
             background: #fff;
             padding: 20px;
             border-radius: 10px;
@@ -120,12 +138,27 @@
             gap: 10px;
         }
 
+<<<<<<< HEAD
         .checkout-box label {
+=======
+        .account-container .form-title {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 30px;
+        }
+
+        .login-box label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .signup-box label {
+>>>>>>> e28d76e75ef53b558e6fcf4bc6ae5c32eef6bd71
             display: block;
             margin-bottom: 10px;
             font-weight: bold;
         }
 
+<<<<<<< HEAD
         .checkout-box input[type="text"],
         .checkout-box input[type="tel"],
         .checkout-box input[type="email"],
@@ -133,33 +166,66 @@
         .checkout-box select {
             width: 100%;
             padding: 10px;
+=======
+        .login-box input[type="text"],
+        .login-box input[type="email"],
+        .login-box input[type="password"] {
+            width: 100%;
+            height: 35px;
+            padding: 5px;
+>>>>>>> e28d76e75ef53b558e6fcf4bc6ae5c32eef6bd71
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
+<<<<<<< HEAD
         .checkout-box button {
             background: #000;
             color: #fff;
+=======
+        .account-container .signup-box input[type="text"],
+        .account-container .signup-box input[type="email"],
+        .account-container .signup-box input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .account-container button {
+            background: #000;
+            color: #fff;
+            height: 40px;
+>>>>>>> e28d76e75ef53b558e6fcf4bc6ae5c32eef6bd71
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
 
+<<<<<<< HEAD
         .form-title {
             font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size: 30px;
         }
 
         .location {
+=======
+        .account-container .location {
+>>>>>>> e28d76e75ef53b558e6fcf4bc6ae5c32eef6bd71
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
 
+<<<<<<< HEAD
         .country,
         .city {
+=======
+        .account-container .country,
+        .account-container .city {
+>>>>>>> e28d76e75ef53b558e6fcf4bc6ae5c32eef6bd71
             display: flex;
             flex-direction: column;
         }
@@ -177,6 +243,7 @@
     </header>
     <h1>Want to Play Games?</h1>
     <h2>SIGN UP NOW!</h2>
+<<<<<<< HEAD
     <div class="checkout-container">
         <div class="checkout-box">
             <div class="form-title">Login</div>
@@ -212,11 +279,52 @@
 
             <label for="Password">Re-enter Password:</label>
             <input type="text" id="password" name="password">
+=======
+    <div class="account-container">
+        <div class="login-box">
+            <div class="form-title">Login</div>
+            <label for="login-name">Name:</label>
+            <input type="text" id="login-name" name="username">
+
+            <label for="login-contact">Contact Number:</label>
+            <input type="email" id="login-contact" name="contact">
+
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="password">
+
+            <button type="submit">Login</button>
+        </div>
+
+
+        <div class="signup-box">
+            <div class="form-title">Sign Up</div>
+            <label for="signup-name">Name:</label>
+            <input type="text" id="signup-name" name="name">
+
+            <label for="signup-contact">Contact Number:</label>
+            <input type="text" id="signup-contact" name="contact">
+
+            <label for="signup-email">Email:</label>
+            <input type="email" id="signup-email" name="email">
+
+            <label for="signup-address">Address:</label>
+            <input type="text" id="signup-address" name="address">
+
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" name="password">
+
+            <label for="signup-confirm-password">Re-enter Password:</label>
+            <input type="password" id="signup-confirm-password" name="confirm-password">
+>>>>>>> e28d76e75ef53b558e6fcf4bc6ae5c32eef6bd71
 
             <button type="submit">Sign Up</button>
         </div>
     </div>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> e28d76e75ef53b558e6fcf4bc6ae5c32eef6bd71
 
     <script>
         window.addEventListener("scroll", function () {
