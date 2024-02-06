@@ -155,7 +155,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            justify-content: center;
             margin-top: 20px;
+        }
+
+        .acc-buttons a {
+            text-decoration: none;
+            color: white;
         }
 
         .acc-buttons button {
@@ -268,8 +274,10 @@
                     Order History
                 </button>
                 <button>
-                    <img src="https://cdn.onlinewebfonts.com/svg/img_574084.png" alt="Claim Prizes Icon">
-                    Claim Prizes
+                    <a href="Claim Prizes.html">
+                        <img src="https://cdn.onlinewebfonts.com/svg/img_574084.png" alt="Claim Prizes Icon">
+                        Claim Prizes
+                    </a>
                 </button>
                 <button>
                     <img src="https://icon-library.com/images/redeem-icon/redeem-icon-0.jpg" alt="Redeem Icon">
@@ -299,6 +307,14 @@
         window.addEventListener("scroll", function () {
             var header = document.querySelector("header");
             header.classList.toggle("sticky", window.scrollY > 0);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const accountHolderName = localStorage.getItem("accountHolderName");
+
+            if (accountHolderName) {
+                document.querySelector(".acc-details p").textContent = accountHolderName;
+            }
         });
     </script>
 </body>

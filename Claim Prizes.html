@@ -93,6 +93,89 @@
         header.sticky ul li a {
             color: #000;
         }
+
+        #rewards-container {
+            background-color: orange;
+            width: 800px;
+            padding: 30px;
+            margin-top: 50px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: 1px solid #555;
+            margin: 20px 0;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        #redeem-input {
+            font-size: 16px;
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #555;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        #redeem-button {
+            padding: 15px 30px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #redeem-button:hover {
+            background-color: #ddd;
+        }
+
+        .prizes-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+        }
+
+        .prize {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .redeem-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .redeem-button:hover {
+            background-color: #ddd;
+        }
     </style>
 </head>
 <body>
@@ -105,11 +188,55 @@
             <li><a href="Account.html">Account</a></li>
         </ul>
     </header>
+
+    <div id="rewards-container">
+        <h1>Rewards</h1>
+        <hr>
+        <p>Current Points: 500</p>
+        <p>Use Points for Discounts or Prizes!</p>
+        <hr>
+        <p>Point Conversion Rate: 1 pt = 20 cents</p>
+        <label for="redeem-input">Select number of Points to Redeem:</label>
+        <input type="number" id="redeem-input" placeholder="Enter points">
+        <button id="redeem-button" onclick="redeemPoints()">Redeem</button>
+        <hr>
+        <p>Pick your Prize!</p>
+        <div class="prizes-container">
+            <div class="prize-1">Prize 1 - 100 pts</div>
+            <button class="redeem-button" onclick="redeemPrize(100)">Redeem</button>
+        </div>
+        <div class="prizes-container">
+            <div class="prize-2">Prize 2 - 200 pts</div>
+            <button class="redeem-button" onclick="redeemPrize(500)">Redeem</button>
+        </div>
+        <div class="prizes-container">
+            <div class="prize-3">Prize 3 - 300 pts</div>
+            <button class="redeem-button" onclick="redeemPrize(1000)">Redeem</button>
+        </div>
+    </div>
+
     <script>
         window.addEventListener("scroll", function () {
             var header = document.querySelector("header");
             header.classList.toggle("sticky", window.scrollY > 0);
         });
+
+        function redeemPoints() {
+        const inputPoints = document.getElementById("redeem-input").value;
+        if (inputPoints > 0 && inputPoints <= 500)
+        {
+          const deduction = inputPoints * 0.02;
+        }
+        else
+        {
+          alert("Please enter a valid number of points to redeem.");
+        }
+        alert(`${inputPoints} points have been redeemed. Your next purchase is deducted by $${deduction.toFixed(2)}`);
+        }
+
+        function redeemPrize(points) {
+            alert(`Prize Redeemed, please await for its arrival. Claim it in "Claim Prizes" whenever you'd like.`);
+        }
     </script>
 </body>
 </html>

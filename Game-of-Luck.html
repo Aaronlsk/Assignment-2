@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @media (max-width: 1000px) {
+            header {
+                padding: 20px 50px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+            }
+
+            header ul {
+                width: 100%;
+                text-align: center;
+            }
+
+            header ul li {
+                margin: 10px 0;
+            }
+
+            header ul li a {
+                margin: 0;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #000;
+            min-height: 200vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            color: #fff;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.6s;
+            padding: 40px 100px;
+            z-index: 100000;
+        }
+
+        header.sticky {
+            padding: 5px 100px;
+            background: #fff;
+            color: #000;
+        }
+
+        header .logo {
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            font-size: 2em;
+            text-transform: none;
+            letter-spacing: 2px;
+            transition: 0.6s;
+        }
+
+        header ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        header ul li {
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            text-decoration: none;
+            color: #fff;
+            letter-spacing: 2px;
+            font-weight: 500px;
+            transition: 0.6s;
+        }
+
+        header.sticky .logo,
+        header.sticky ul li a {
+            color: #000;
+        }
+
+        #game-container {
+            background-image: url(luck-background.jpg);
+            margin-top: 50px;
+            height: 1050px;
+            width: 1000px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        #game-container h2 {
+            margin-top: 30px;
+        }  
+
+        #game-container h3 {
+            font-size: 50px;
+        }  
+
+        #gameplay {
+            background-color: lightgreen;
+            height: 700px;
+            width: 800px;
+            margin: 10% auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .present {
+            width: 80%;
+            height: 200px;
+            border: 2px solid #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        #rules-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #rules-button:hover {
+            background-color: lightgreen;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        #rules-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        #rules-content {
+            color: red;
+            background: #fff;
+            padding: 50px; 
+            border-radius: 5px;
+            max-width: 600px; 
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #rules-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+        }
+
+        #close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Guess the Prize</title>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">EZMart</a>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="What's New.html">What's New</a></li>
+        <li><a href="Games.html">Games</a></li>
+        <li><a href="Account.html">Account</a></li>
+    </ul>
+</header>
+
+<div id="game-container">
+    <h2>Game of Luck</h2>
+    <button id="rules-button" onclick="showRules()">Rules</button>
+
+    <div id="gameplay"></div>
+    <h3>Pick Your Present!</h3>
+</div>
+
+  <div id="rules-modal">
+      <div id="rules-content">
+          <span id="close-modal" onclick="closeModal">&times;</span>
+          <h2>Game Rules</h2>
+          <p>Welcome to the Game of Luck! Here are the rules:</p>
+          <ul>
+              <li>Every day, stand a chance to earn points.</li>
+              <li>Each present contains different number of points.</li>
+              <li>Let luck decide your fate!</li>
+          </ul>
+      </div>
+  </div>
+
+  <script>
+      window.addEventListener("scroll", function () {
+          var header = document.querySelector("header");
+          header.classList.toggle("sticky", window.scrollY > 0);
+      });
+ 
+      const presents = [
+          { points: 0, tries: 1 },
+          { points: 0, tries: 1 },
+          { points: 0, tries: 1 },
+          { points: 25, tries: 1 },
+          { points: 25, tries: 1 },
+          { points: 25, tries: 1 },
+          { points: 50, tries: 1 },
+          { points: 50, tries: 1 },
+          { points: 100, tries: 1 },
+      ];
+
+      let attemptsRemaining = 1;
+      let totalPoints = 0;
+
+      const gameContainer = document.getElementById("gameplay");
+
+      for (let i = presents.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [presents[i], presents[j]] = [presents[j], presents[i]];
+      }
+
+      presents.forEach((present, index) => {
+          const presentElement = document.createElement("div");
+          presentElement.classList.add("present");
+
+          const presentText = document.createElement("div");
+          presentText.classList.add("present-text");
+          presentElement.appendChild(presentText);
+
+          // Image element with the same source for all presents
+          const presentImage = document.createElement("img");
+          presentImage.src = "https://webstockreview.net/images/box-clipart-quality-6.png";
+          presentImage.alt = `Present ${index + 1}`;
+          presentImage.style.width = "100%";
+          presentImage.style.height = "100%";
+
+          presentElement.appendChild(presentImage);
+
+          presentElement.addEventListener("click", () => {
+              if (attemptsRemaining > 0) {
+                  totalPoints += present.points;
+                  attemptsRemaining--;         
+
+                  if (present.points === 0) {
+                      presentText.textContent = "0 Points \nToo Bad!";
+                  } else if (present.points === 100) {
+                      presentText.textContent = "Jackpot! \n100 Points!";
+                  } else {
+                      presentText.textContent = `${present.points} points`;
+                  }
+
+                  alert(`You earned ${present.points} points! Total points: ${totalPoints}`);
+              } else {
+                  alert("You've used all your attempts for today!");
+              }
+          });
+
+          gameContainer.appendChild(presentElement);
+      });
+
+      function showRules() {
+          const rulesModal = document.getElementById("rules-modal");
+          rulesModal.style.display = "flex";
+      }
+
+      function closeModal() {
+          const rulesModal = document.getElementById("rules-modal");
+          rulesModal.style.display = "none";
+      }
+
+      window.onclick = function (event) {
+          const rulesModal = document.getElementById("rules-modal");
+          if (event.target === rulesModal) {
+              closeModal();
+          }
+      };
+  </script>
+
+  </body>
+  </html>
+
+</body>
+</html>
