@@ -185,14 +185,15 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="What's New.html">What's New</a></li>
             <li><a href="Games.html">Games</a></li>
-            <li><a href="Account.html">Account</a></li>
+            <li><a id="account-link" href="Account.html">Account</a></li>
         </ul>
+        <script src="script.js"></script>
     </header>
 
     <div id="rewards-container">
         <h1>Rewards</h1>
         <hr>
-        <p>Current Points: 500</p>
+        <p><span id="account-points"></span></p>
         <p>Use Points for Discounts or Prizes!</p>
         <hr>
         <p>Point Conversion Rate: 1 pt = 20 cents</p>
@@ -221,21 +222,32 @@
             header.classList.toggle("sticky", window.scrollY > 0);
         });
 
-        function redeemPoints() {
-        const inputPoints = document.getElementById("redeem-input").value;
-        if (inputPoints > 0 && inputPoints <= 500)
-        {
-          const deduction = inputPoints * 0.02;
-        }
-        else
-        {
-          alert("Please enter a valid number of points to redeem.");
-        }
-        alert(`${inputPoints} points have been redeemed. Your next purchase is deducted by $${deduction.toFixed(2)}`);
-        }
+        window.addEventListener("DOMContentLoaded", function () {
+            const accountPoints = localStorage.getItem("accountPoints");
+            const currentPointsElement = document.getElementById("account-points");
 
-        function redeemPrize(points) {
-            alert(`Prize Redeemed, please await for its arrival. Claim it in "Claim Prizes" whenever you'd like.`);
+            if (accountPoints) {
+                currentPointsElement.textContent = "Points: " + accountPoints;
+            }
+        });
+
+        function redeemPoints() {
+            const inputPoints = document.getElementById("redeem-input").value;
+
+            if (inputPoints > 0 && inputPoints <= 500) {
+                const deduction = inputPoints * 0.02;
+
+                const currentPointsElement = document.getElementById("account-points");
+                const currentPoints = parseInt(currentPointsElement.textContent, 10);
+                const updatedPoints = currentPoints - inputPoints;
+                currentPointsElement.textContent = updatedPoints;
+
+                localStorage.setItem("accountPoints", updatedPoints);
+
+                alert(`${inputPoints} points have been redeemed. Your next purchase is deducted by $${deduction.toFixed(2)}`);
+            } else {
+                alert("Please enter a valid number of points to redeem.");
+            }
         }
     </script>
 </body>

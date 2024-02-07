@@ -201,6 +201,7 @@
     </header>
     <h1>Want to Play Games?</h1>
     <h2>SIGN UP NOW!</h2>
+    <p id="account-points"></p>
     <div class="account-container">
         <div class="login-box">
             <div class="form-title">Login</div>
@@ -260,7 +261,8 @@
                     "Name": suName,
                     "Contact": suContact,
                     "Email": suEmail,
-                    "Password": suPassword
+                    "Password": suPassword,
+                    "Points": 0
                 };
 
                 let settings = {
@@ -282,7 +284,11 @@
                     console.log(data);
                     document.getElementById("signup-btn").disabled = false;
                     alert("Account created successfully!");
+                    
+                    localStorage.setItem("isLoggedIn", "true");
                     localStorage.setItem("accountHolderName", suName);
+                    localStorage.setItem("accountPoints", 0);
+                    
                     window.location.href = "AccountDetails.html";
                 })
                 .catch(error => {
@@ -292,7 +298,32 @@
                 });
             });
 
-            
+            document.getElementById("login-btn").addEventListener("click", function (e) {
+                e.preventDefault();
+
+                let loginName = document.getElementById("login-name").value;
+                let loginPassword = document.getElementById("login-password").value;
+
+                let loginEndpoint = "https://student-9661.restdb.io/rest/account?q={\"Name\":\"" + loginName + "\",\"Password\":\"" + loginPassword + "\"}";
+
+                fetch(loginEndpoint, { headers: { "x-apikey": APIKEY } })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        alert("Login successful!");
+                        localStorage.setItem("isLoggedIn", "true");
+                        localStorage.setItem("accountHolderName", loginName);
+                        localStorage.setItem("accountPoints", data[0].Points);
+                        window.location.href = "AccountDetails.html";
+                    } else {
+                        alert("Login failed. Please check your credentials.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error during login:", error);
+                    alert("Login failed. Please try again.");
+                });
+            });
         });
     </script>
 </body>
