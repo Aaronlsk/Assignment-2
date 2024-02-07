@@ -88,9 +88,17 @@
             color: #fff;
             letter-spacing: 2px;
             font-weight: 500px;
+            font-size: 18px;
             transition: 0.6s;
         }
-
+        header ul li a:hover,
+        header ul li a.active {
+            color: #ee2761
+        }
+        header.sticky ul li a.active,
+        header.sticky ul li a:hover {
+            color: #ee2761
+        }
         header.sticky .logo,
         header.sticky ul li a {
             color: #000;
@@ -255,7 +263,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="What's New.html">What's New</a></li>
             <li><a href="Games.html">Games</a></li>
-            <li><a href="Account.html">Account</a></li>
+            <li><a href="Account.html" class="active">Account</a></li>
         </ul>
     </header>
     <h1>Account Details</h1>
@@ -270,18 +278,14 @@
 
             <div class="acc-buttons">
                 <button>
-                    <img src="https://vectorified.com/images/order-history-icon-36.png" alt="Order History Icon">
-                    Order History
+                    <img src="https://pic.onlinewebfonts.com/thumbnails/icons_405171.svg" alt="Sign Out Icon">
+                    Sign Out
                 </button>
                 <button>
                     <a href="Claim Prizes.html">
                         <img src="https://cdn.onlinewebfonts.com/svg/img_574084.png" alt="Claim Prizes Icon">
                         Claim Prizes
                     </a>
-                </button>
-                <button>
-                    <img src="https://icon-library.com/images/redeem-icon/redeem-icon-0.jpg" alt="Redeem Icon">
-                    Redeem
                 </button>
                 <button>
                     <img src="https://icon-library.com/images/settings-icon-vector/settings-icon-vector-14.jpg" alt="Settings Icon">
