@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Game</title>
     <style>
         @media (max-width: 1000px) {
             header {
@@ -167,6 +168,7 @@
 
         .game-buttons a {
             text-decoration: none;
+            color: white;
         }
 
         .game-buttons button img {
@@ -174,6 +176,21 @@
             height: 70px;
             object-fit: cover;
             border-radius: 50%;
+        }
+
+        .game-buttons-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .game-buttons-link img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
         }
 
         .prize-content {
@@ -233,7 +250,6 @@
 </head>
 <body>
     <header>
-        <title>Game</title>
         <a href="#" class="logo">EZMart</a>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -257,12 +273,12 @@
                     Delivery Driver
                 </button>
                 
-                <a href="Game-of-Luck.html" id="gol-btn">
-                    <button>
+                <button>
+                    <a id="gol-btn" class="game-buttons-link" href="Game-of-Luck.html">
                         <img src="https://cdn4.iconfinder.com/data/icons/love-and-romance-1-9/128/12-1024.png" alt="Game Icon 3">
-                        Game of Luck
-                    </button>
-                </a>
+                        <span>Game of Luck</span>
+                    </a>
+                </button>
             </div>
         </div>
     </div>
