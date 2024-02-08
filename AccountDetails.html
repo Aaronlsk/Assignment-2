@@ -196,6 +196,10 @@
             margin-bottom: 5px;
         }
 
+        .acc-buttons button:hover {
+            background-color: indigo;
+        }
+
         .play-games {
             background-color: lightblue;
             background-image: url(candyland-background.jpg);
@@ -288,8 +292,10 @@
                     </a>
                 </button>
                 <button>
-                    <img src="https://icon-library.com/images/settings-icon-vector/settings-icon-vector-14.jpg" alt="Settings Icon">
-                    Settings
+                    <a href="Settings.html">
+                        <img src="https://icon-library.com/images/settings-icon-vector/settings-icon-vector-14.jpg" alt="Settings Icon">
+                        Settings
+                    </a>
                 </button>
             </div>
         </div>
@@ -319,6 +325,12 @@
             if (accountHolderName) {
                 document.querySelector(".acc-details p").textContent = accountHolderName;
             }
+
+            document.querySelector(".acc-buttons button:first-child").addEventListener("click", function () {
+                localStorage.removeItem("isLoggedIn");
+                localStorage.removeItem("accountHolderName");
+                window.location.href = "Account.html";
+            });
         });
     </script>
 </body>

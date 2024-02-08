@@ -212,7 +212,6 @@
         <li><a href="Games.html" class="active">Games</a></li>
         <li><a id="account-link" href="Account.html">Account</a></li>
     </ul>
-    <script src="script.js"></script>
 </header>
 
 <div id="game-container">
@@ -272,7 +271,6 @@
           presentText.classList.add("present-text");
           presentElement.appendChild(presentText);
 
-          // Image element with the same source for all presents
           const presentImage = document.createElement("img");
           presentImage.src = "https://webstockreview.net/images/box-clipart-quality-6.png";
           presentImage.alt = `Present ${index + 1}`;
@@ -282,19 +280,34 @@
           presentElement.appendChild(presentImage);
 
           presentElement.addEventListener("click", () => {
-              if (attemptsRemaining > 0) {
+              if (attemptsRemaining == 1) {
                   totalPoints += present.points;
                   attemptsRemaining--;         
 
-                  if (present.points === 0) {
+                  if (present.points == 0) {
                       presentText.textContent = "0 Points \nToo Bad!";
-                  } else if (present.points === 100) {
+                  } else if (present.points == 100) {
                       presentText.textContent = "Jackpot! \n100 Points!";
                   } else {
                       presentText.textContent = `${present.points} points`;
                   }
 
                   alert(`You earned ${present.points} points! Total points: ${totalPoints}`);
+
+                  const currentAccountPoints = localStorage.getItem("accountPoints") || 0;
+                  const updatedAccountPoints = parseInt(currentAccountPoints, 10) + totalPoints;
+                  localStorage.setItem("accountPoints", updatedAccountPoints);
+
+                  const claimPrizesWindow = window.opener;
+                  if (claimPrizesWindow && !claimPrizesWindow.closed) {
+                    const currentPointsElement = claimPrizesWindow.document.getElementById("account-points");
+                        if (currentPointsElement) {
+                            currentPointsElement.textContent = "Points: " + updatedAccountPoints;
+                        }
+                            }
+                        else {
+                            alert("You've used all your attempts for today!");
+                        }
               } else {
                   alert("You've used all your attempts for today!");
               }
@@ -320,9 +333,6 @@
           }
       };
   </script>
-
-  </body>
-  </html>
-
+  <script src="script.js"></script>
 </body>
 </html>

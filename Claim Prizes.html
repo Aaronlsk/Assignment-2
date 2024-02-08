@@ -112,6 +112,10 @@
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
+        #account-points {
+            font-size: 18px;
+        }
+
         h1 {
             color: white;
             font-size: 36px;
@@ -201,7 +205,7 @@
     <div id="rewards-container">
         <h1>Rewards</h1>
         <hr>
-        <p><span id="account-points"></span></p>
+        <p>Points: <span id="account-points"></span></p>
         <p>Use Points for Discounts or Prizes!</p>
         <hr>
         <p>Point Conversion Rate: 1 pt = 20 cents</p>
@@ -215,11 +219,11 @@
             <button class="redeem-button" onclick="redeemPrize(100)">Redeem</button>
         </div>
         <div class="prizes-container">
-            <div class="prize-2">Prize 2 - 200 pts</div>
+            <div class="prize-2">Prize 2 - 500 pts</div>
             <button class="redeem-button" onclick="redeemPrize(500)">Redeem</button>
         </div>
         <div class="prizes-container">
-            <div class="prize-3">Prize 3 - 300 pts</div>
+            <div class="prize-3">Prize 3 - 1000 pts</div>
             <button class="redeem-button" onclick="redeemPrize(1000)">Redeem</button>
         </div>
     </div>
@@ -231,32 +235,51 @@
         });
 
         window.addEventListener("DOMContentLoaded", function () {
-            const accountPoints = localStorage.getItem("accountPoints");
-            const currentPointsElement = document.getElementById("account-points");
+            const accountPts = localStorage.getItem("accountPoints");
+            const currentPtsElement = document.getElementById("account-points");
 
-            if (accountPoints) {
-                currentPointsElement.textContent = "Points: " + accountPoints;
+            if (accountPts) {
+                currentPtsElement.textContent = accountPts;
             }
         });
 
         function redeemPoints() {
-            const inputPoints = document.getElementById("redeem-input").value;
+            const inputPts = document.getElementById("redeem-input").value;
 
-            if (inputPoints > 0 && inputPoints <= 500) {
-                const deduction = inputPoints * 0.02;
+            if (inputPts > 0 && inputPts <= 500) {
+                const deduction = inputPts * 0.20;
 
-                const currentPointsElement = document.getElementById("account-points");
-                const currentPoints = parseInt(currentPointsElement.textContent, 10);
-                const updatedPoints = currentPoints - inputPoints;
-                currentPointsElement.textContent = updatedPoints;
+                const currentPtsElement = document.getElementById("account-points");
+                const currentPts = parseInt(currentPtsElement.textContent, 10);
+                const newPts = currentPts - inputPts;
+                currentPtsElement.textContent = newPts;
 
-                localStorage.setItem("accountPoints", updatedPoints);
+                localStorage.setItem("accountPoints", newPts);
 
-                alert(`${inputPoints} points have been redeemed. Your next purchase is deducted by $${deduction.toFixed(2)}`);
-            } else {
+                alert(`${inputPts} points have been redeemed. Your next purchase is deducted by $${deduction.toFixed(2)}`);
+            } 
+            else {
                 alert("Please enter a valid number of points to redeem.");
             }
         }
+
+        function redeemPrize(pointsToRedeem) {
+            const currentPtsElement = document.getElementById("account-points");
+            const currentPts = parseInt(currentPtsElement.textContent, 10);
+
+            if (currentPts > pointsToRedeem) {
+                const newPts = currentPts - pointsToRedeem;
+                currentPtsElement.textContent = newPts
+
+                localStorage.setItem("accountPoints", newPts)
+                alert("Your Prize has been Claimed!")
+            }
+
+            else {
+                alert("Insufficient Points. Please select a prize you have enough points to redeem.")
+            }
+        }
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
