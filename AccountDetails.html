@@ -168,27 +168,25 @@
         }
 
         .acc-buttons a {
-            text-decoration: none;
-            color: white;
-        }
-
-        .acc-buttons button {
             background: #3F51B5;
             color: #fff;
+            font-size: 13px;
             height: 100px;
             width: 100px;
             border: none;
             border-radius: 5px;
             padding: 10px 15px;
-            margin: 0 30px;
+            margin: 0 10px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            transition: background-color 0.3s;
+            text-decoration: none;
         }
 
-        .acc-buttons button img {
+        .acc-buttons a img {
             width: 40px;
             height: 40px;
             object-fit: cover;
@@ -196,7 +194,7 @@
             margin-bottom: 5px;
         }
 
-        .acc-buttons button:hover {
+        .acc-buttons a:hover {
             background-color: indigo;
         }
 
@@ -281,22 +279,18 @@
             </div>
 
             <div class="acc-buttons">
-                <button>
+                <a id="sign-out-btn" class="button">
                     <img src="https://pic.onlinewebfonts.com/thumbnails/icons_405171.svg" alt="Sign Out Icon">
                     Sign Out
-                </button>
-                <button>
-                    <a href="Claim-Prizes.html">
-                        <img src="https://cdn.onlinewebfonts.com/svg/img_574084.png" alt="Claim Prizes Icon">
-                        Claim Prizes
-                    </a>
-                </button>
-                <button>
-                    <a href="Settings.html">
-                        <img src="https://icon-library.com/images/settings-icon-vector/settings-icon-vector-14.jpg" alt="Settings Icon">
-                        Settings
-                    </a>
-                </button>
+                </a>
+                <a href="Claim-Prizes.html" class="button">
+                    <img src="https://cdn.onlinewebfonts.com/svg/img_574084.png" alt="Claim Prizes Icon">
+                    Claim Prizes
+                </a>
+                <a href="Settings.html" class="button">
+                    <img src="https://icon-library.com/images/settings-icon-vector/settings-icon-vector-14.jpg" alt="Settings Icon">
+                    Settings
+                </a>
             </div>
         </div>
     </div>
@@ -326,7 +320,7 @@
                 document.querySelector(".acc-details p").textContent = accountHolderName;
             }
 
-            document.querySelector(".acc-buttons button:first-child").addEventListener("click", function () {
+            document.querySelector("#sign-out-btn").addEventListener("click", function () {
                 localStorage.removeItem("isLoggedIn");
                 localStorage.removeItem("accountHolderName");
                 window.location.href = "Account.html";

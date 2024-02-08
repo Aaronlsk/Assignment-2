@@ -150,46 +150,34 @@
             margin-top: 20px;
         }
 
-        .game-buttons button {
-            background: lightcoral;
-            color: #fff;
-            height: 125px;
-            width: 150px;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            margin: 0 30px;
+        .game-buttons-link {
+            text-decoration: none;
+            color: white;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            background: lightcoral;
+            padding: 12px 18px;
+            border-radius: 5px;
+            margin: 0 10px;
+            height: 135px;
+            width: 150px;
         }
 
-        .game-buttons a {
-            text-decoration: none;
-            color: white;
-        }
-
-        .game-buttons button img {
+        .game-buttons-link img {
             width: 70px;
             height: 70px;
             object-fit: cover;
             border-radius: 50%;
         }
 
-        .game-buttons-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            cursor: pointer;
-        }
-
         .game-buttons-link p {
-            color: white; 
+            color: white;
             font-family: inherit;
-            font-size: 14px;
+            font-size: 18px;
+            margin: 10px 0 0 0;
         }
 
         .prize-content {
@@ -245,6 +233,10 @@
             object-fit: cover;
             border-radius: 100%;
         }
+
+        #gol-btn {
+            padding: 12px 18px;
+        }
     </style>
 </head>
 <body>
@@ -262,21 +254,19 @@
         <div class="game-content">
             <p>Play Games to Win Points!</p>
             <div class="game-buttons">
-                <button>
+                <a class="game-buttons-link">
                     <img src="https://image.freepik.com/free-vector/falling-presents-background_485157-231.jpg" alt="Game Icon 1">
                     Falling Presents
-                </button>
+                </a>
 
-                <button>
+                <a class="game-buttons-link">
                     <img src="https://static.vecteezy.com/system/resources/previews/000/352/242/original/vector-truck-icon.jpg" alt="Game Icon 2">
                     Delivery Driver
-                </button>
+                </a>
                 
                 <a id="gol-btn" class="game-buttons-link" href="Game-of-Luck.html">
-                    <button>
-                        <img src="https://cdn4.iconfinder.com/data/icons/love-and-romance-1-9/128/12-1024.png" alt="Game Icon 3">
-                        <p>Game of Luck</p>
-                    </button>
+                    <img src="https://cdn4.iconfinder.com/data/icons/love-and-romance-1-9/128/12-1024.png" alt="Game Icon 3">
+                    Game of Luck
                 </a>
             </div>
         </div>
