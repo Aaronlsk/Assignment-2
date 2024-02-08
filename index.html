@@ -314,7 +314,38 @@
             background-color: #ee2761;
             border-radius: 5px;
         }
-
+        footer{
+            background-color: rgb(29, 29, 82);
+            padding: 40px 80px;
+        }
+        footer p{
+            color: #888;
+            text-align: center;
+        }
+        .social-link li{
+            list-style: none;
+            display: inline-block;
+            margin-left: 20px;
+        }
+        .social-link li a{
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            min-width: 40px;
+            height: 40px;
+        }
+        .social-link li a:link,
+        .social-link li a:visited{
+            text-decoration: none;
+            transition: all 0.5s;
+        }
+        .social-link li a:active,
+        .social-link li a:hover{
+            background-color: #ececec;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -482,6 +513,22 @@
         </div>
     </section>
 
+    <div class="footer-container">
+        <p>Connect with us!</p>
+    </div>
+    <div class="footer-container">
+        <ul class="social-link">
+            <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-container">
+        <p>
+            &copy;Copyrights EZMart. All rights reserved.
+        </p>
+    </div>
 
     <script>
         // Navigation Bar
