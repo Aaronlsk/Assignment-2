@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Game</title>
     <style>
         @media (max-width: 1000px) {
             header {
@@ -85,7 +86,6 @@
             text-decoration: none;
             color: #fff;
             letter-spacing: 2px;
-            font-weight: 500px;
             font-size: 18px;
             transition: 0.6s;
         }
@@ -168,6 +168,7 @@
 
         .game-buttons a {
             text-decoration: none;
+            color: white;
         }
 
         .game-buttons button img {
@@ -175,6 +176,20 @@
             height: 70px;
             object-fit: cover;
             border-radius: 50%;
+        }
+
+        .game-buttons-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .game-buttons-link p {
+            color: white; 
+            font-family: inherit;
+            font-size: 14px;
         }
 
         .prize-content {
@@ -237,11 +252,10 @@
         <a href="#" class="logo">EZMart</a>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="What's New.html">What's New</a></li>
+            <li><a href="What's-New.html">What's New</a></li>
             <li><a href="Games.html" class="active">Games</a></li>
             <li><a id="account-link" href="Account.html">Account</a></li>
         </ul>
-        <script src="script.js"></script>
     </header>
 
     <div class="game-container">
@@ -258,10 +272,10 @@
                     Delivery Driver
                 </button>
                 
-                <a href="Game-of-Luck.html">
+                <a id="gol-btn" class="game-buttons-link" href="Game-of-Luck.html">
                     <button>
                         <img src="https://cdn4.iconfinder.com/data/icons/love-and-romance-1-9/128/12-1024.png" alt="Game Icon 3">
-                        Game of Luck
+                        <p>Game of Luck</p>
                     </button>
                 </a>
             </div>
@@ -296,5 +310,6 @@
             header.classList.toggle("sticky", window.scrollY > 0);
         });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>

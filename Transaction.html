@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Transaction</title>
     <style>
         @media (max-width: 1000px) {
             header {
@@ -85,21 +86,17 @@
             text-decoration: none;
             color: #fff;
             letter-spacing: 2px;
-            font-weight: 500px;
             font-size: 18px;
             transition: 0.6s;
-        }
-        header ul li a:hover,
-        header ul li a.active {
-            color: #ee2761
-        }
-        header.sticky ul li a.active,
-        header.sticky ul li a:hover {
-            color: #ee2761
         }
         header.sticky .logo,
         header.sticky ul li a {
             color: #000;
+        }
+
+        .loading-text {
+            color: white;
+            text-align: center;
         }
     </style>
 </head>
@@ -108,17 +105,36 @@
         <a href="#" class="logo">EZMart</a>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="What's New.html">What's New</a></li>
+            <li><a href="What's-New.html">What's New</a></li>
             <li><a href="Games.html">Games</a></li>
             <li><a id="account-link" href="Account.html">Account</a></li>
         </ul>
-        <script src="script.js"></script>
     </header>
+
+    <body class="bg-blue">
+        <div>
+            <div class="animation-center">
+                <div style="display:block;">
+            <dotlottie-player src="https://lottie.host/044d147a-cd9d-47fb-a60c-141fbd3dbe3f/rfMD8tlE5Q.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+                </div>
+    
+            </div>
+            <div class="loading-text">Transaction is being made...</div>
+        </div>
+        
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>  
+
     <script>
         window.addEventListener("scroll", function () {
             var header = document.querySelector("header");
             header.classList.toggle("sticky", window.scrollY > 0);
         });
+
+        setTimeout(function () {
+            alert("Transaction Completed!");
+            window.location.href = "index.html";
+        }, 5000);
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
